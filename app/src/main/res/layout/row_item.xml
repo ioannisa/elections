@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="electionResult"
+            type="eu.anifantakis.elections.ElectionResult" />
+
+        <variable
+            name="clickListener"
+            type="eu.anifantakis.elections.main.ElectionAdapter.ElectionClickListener" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        android:onClick="@{() -> clickListener.onClick(electionResult)}">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="16dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="16dp" />
+
+        <TextView
+            android:id="@+id/party_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{electionResult.party_title}"
+            android:textAppearance="@style/header_style"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+            app:layout_constraintEnd_toStartOf="@+id/party_perc"
+            app:layout_constraintStart_toEndOf="@+id/party_img"
+            app:layout_constraintTop_toTopOf="@+id/top_guideline"
+            tools:text="PARTY NAME" />
+
+        <TextView
+            android:id="@+id/party_perc"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:text="@{electionResult.party_perc_str}"
+            android:textAppearance="@style/subheader_style"
+            app:layout_constraintBottom_toBottomOf="@+id/party_name"
+            app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+            app:layout_constraintTop_toTopOf="@+id/party_name"
+            tools:text="100%" />
+
+        <ImageView
+            android:id="@+id/party_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/top_guideline"
+            app:loadUrl="@{electionResult.image_url}"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
