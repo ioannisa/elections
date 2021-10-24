@@ -1,13 +1,10 @@
 package eu.anifantakis.elections.database
 
 import android.content.Context
-import androidx.databinding.adapters.Converters
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import eu.anifantakis.elections.DatabaseElecResult
 import eu.anifantakis.elections.PartyNote
-import java.util.*
 
 @Dao
 interface ElectionsDao{

@@ -1,13 +1,11 @@
 package eu.anifantakis.elections.network
 
-import androidx.lifecycle.LiveData
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import eu.anifantakis.elections.Constants
+import eu.anifantakis.elections.NetworkElecResult
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import eu.anifantakis.elections.ElectionResult
-import eu.anifantakis.elections.NetworkElecResult
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query

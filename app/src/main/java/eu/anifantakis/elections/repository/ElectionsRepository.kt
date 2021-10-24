@@ -18,6 +18,7 @@ class ElectionsRepository(private val database: ElectionsDatabase) {
         Transformations.map(database.electionsDao.getElecResults()) { it?.asDomainModel() }
 
     var status = MutableLiveData<NETWORK_STATUS>(NETWORK_STATUS.INITIALIZING)
+    var notifyAboutStatus = MutableLiveData<Boolean>(false)
 
     suspend fun getPartyNote(party_id: Long): String{
         var result = ""
@@ -42,6 +43,7 @@ class ElectionsRepository(private val database: ElectionsDatabase) {
     suspend fun refreshElectionResults(){
         withContext(Dispatchers.Main){
             try {
+                notifyAboutStatus.value = false;
                 status.value = NETWORK_STATUS.INITIALIZING
 
                 val electionResultsList = Network.retrofitService.getElecResults(
@@ -63,6 +65,7 @@ class ElectionsRepository(private val database: ElectionsDatabase) {
             }
             catch(e: Exception){
                 // Network Error (no internet)
+                notifyAboutStatus.value = true;
                 status.value = NETWORK_STATUS.DISCONNECTED
             }
         }

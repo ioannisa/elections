@@ -1,6 +1,5 @@
 package eu.anifantakis.elections.main
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import eu.anifantakis.elections.repository.ElectionsRepository

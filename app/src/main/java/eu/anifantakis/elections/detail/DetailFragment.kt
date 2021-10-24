@@ -1,16 +1,13 @@
 package eu.anifantakis.elections.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import eu.anifantakis.elections.databinding.FragmentDetailBinding
-import eu.anifantakis.elections.main.MainViewModel
-import eu.anifantakis.elections.main.MainViewModelFactory
 import eu.anifantakis.elections.sharedviewmodel.SharedViewModel
 import eu.anifantakis.elections.sharedviewmodel.SharedViewModelFactory
 

@@ -1,22 +1,25 @@
 package eu.anifantakis.elections.main
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import eu.anifantakis.elections.ElectionResult
-import eu.anifantakis.elections.database.getDatabase
+import eu.anifantakis.elections.network.NETWORK_STATUS
 import eu.anifantakis.elections.repository.ElectionsRepository
-import kotlinx.coroutines.launch
 
-class MainViewModel(val electionsRepository: ElectionsRepository): ViewModel() {
+class MainViewModel(private val electionsRepository: ElectionsRepository): ViewModel() {
 
     // expose the election results of the repository
     val electionsList = electionsRepository.electionResults
 
     // log the status of the repository
-    val networkStatus =  electionsRepository.status
+    val networkStatus = electionsRepository.status
+    val notifyAboutStatus = electionsRepository.notifyAboutStatus
+
+    fun onNetworkStatusNotified(){
+        electionsRepository.notifyAboutStatus.value = false
+    }
+
 
     // navigate to the detail screen when clicking a party
     private val _navigateToPartyDetail = MutableLiveData<ElectionResult>()

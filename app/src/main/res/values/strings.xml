@@ -4,4 +4,5 @@
     <string name="action_bar_detail">Party Details</string>
     <string name="write_your_note">Write your Note</string>
     <string name="save_note">Save and Close</string>
+    <string name="no_network">No Network Available</string>
 </resources>

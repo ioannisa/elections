@@ -3,7 +3,6 @@ package eu.anifantakis.elections.sharedviewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import eu.anifantakis.elections.main.MainViewModel
 
 class SharedViewModelFactory(
     private val application: Application
