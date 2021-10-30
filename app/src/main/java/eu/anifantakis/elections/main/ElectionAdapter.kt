@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import eu.anifantakis.elections.ElectionResult
 import eu.anifantakis.elections.databinding.RowItemBinding
 
-class ElectionAdapter(val clickListener: ElectionClickListener): ListAdapter<ElectionResult, ElectionAdapter.AsteroidAdapterViewHolder>(DiffCallback){
+class ElectionAdapter(val clickListener: ElectionClickListener): ListAdapter<ElectionResult, ElectionAdapter.ElecResultViewHolder>(DiffCallback){
     companion object DiffCallback: DiffUtil.ItemCallback<ElectionResult>() {
         // Same item if the items share the same id
         override fun areItemsTheSame(oldItem: ElectionResult, newItem: ElectionResult)    = (oldItem.idparty == newItem.idparty)
@@ -21,16 +21,16 @@ class ElectionAdapter(val clickListener: ElectionClickListener): ListAdapter<Ele
         fun onClick(party_id: ElectionResult) = clickListener(party_id)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionAdapter.AsteroidAdapterViewHolder {
-        return AsteroidAdapterViewHolder.from(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElectionAdapter.ElecResultViewHolder {
+        return ElecResultViewHolder.from(parent)
     }
 
-    override fun onBindViewHolder(holder: ElectionAdapter.AsteroidAdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ElectionAdapter.ElecResultViewHolder, position: Int) {
         val electionResult = getItem(position)
         holder.bind(clickListener, electionResult)
     }
 
-    class AsteroidAdapterViewHolder private constructor (private val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ElecResultViewHolder private constructor (private val binding: RowItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(clickListener: ElectionClickListener, electionResult: ElectionResult){
             binding.electionResult = electionResult
             binding.clickListener = clickListener
@@ -39,10 +39,10 @@ class ElectionAdapter(val clickListener: ElectionClickListener): ListAdapter<Ele
         }
 
         companion object {
-            fun from(parent: ViewGroup): AsteroidAdapterViewHolder {
+            fun from(parent: ViewGroup): ElecResultViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = RowItemBinding.inflate(layoutInflater, parent, false)
-                return AsteroidAdapterViewHolder(binding)
+                return ElecResultViewHolder(binding)
             }
         }
     }

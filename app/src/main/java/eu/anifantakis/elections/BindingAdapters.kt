@@ -11,7 +11,7 @@ import eu.anifantakis.elections.network.NETWORK_STATUS
 
 /**
  * Binded at the RecyclerView of activity_main.xml
- * This binding adapter will update the RecyclerView items when the asteroids list live data gets updated
+ * This binding adapter will update the RecyclerView items when the election results list live data gets updated
  */
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<ElectionResult>?){

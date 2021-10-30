@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 /**
- * DOMAIN LEVEL Asteroid data class
+ * DOMAIN LEVEL data class
  */
 @Parcelize
 data class ElectionResult (
@@ -19,7 +19,7 @@ data class ElectionResult (
 ): Parcelable
 
 /**
- * RETROFIT LEVEL Asteroid data class
+ * RETROFIT LEVEL data class
  */
 
 data class NetworkElecResultContainer(val elecResults: ArrayList<NetworkElecResult>)
@@ -43,7 +43,7 @@ data class NetworkElecResult (
 )
 
 /**
- * ROOM LEVEL Asteroid data class (the Room Entity - table)
+ * ROOM LEVEL data class (the Room Entity - table)
  */
 @Entity
 data class DatabaseElecResult (

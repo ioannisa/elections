@@ -26,8 +26,8 @@ class MainViewModel(private val electionsRepository: ElectionsRepository): ViewM
     val navigateToPartyDetail
         get() = _navigateToPartyDetail
 
-    fun onPartyItemClicked(asteroid: ElectionResult) {
-        _navigateToPartyDetail.value = asteroid
+    fun onPartyItemClicked(elecResult: ElectionResult) {
+        _navigateToPartyDetail.value = elecResult
     }
 
     fun onPartyDetailNavigated() {
